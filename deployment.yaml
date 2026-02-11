@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-app-log
+spec:
+  replicas: 3 # Tienes varias instancias
+  selector:
+    matchLabels:
+      app: mi-app-log
+  template:
+    metadata:
+      labels:
+        app: mi-app-log
+    spec:
+      containers:
+        - name: app
+          image: hernancloud01/demo4:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            # --- AQUÍ ESTÁ EL TRUCO ---
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            # --------------------------
