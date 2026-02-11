@@ -18,7 +18,7 @@ FROM eclipse-temurin:25-jre-jammy
 WORKDIR /app
 
 # Copia el jar generado desde la etapa build
-COPY --from=build /app/infrastructure/target/infrastructure-1.0-SNAPSHOT.jar app.jar
+COPY --from=build /app/boot-app/target/boot-app-1.0-SNAPSHOT.jar app.jar
 
 # Expone el puerto para la aplicación
 EXPOSE 8080

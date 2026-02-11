@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mi-app-log
+  name: my-logs
 spec:
   replicas: 3 # Tienes varias instancias
   selector:
     matchLabels:
-      app: mi-app-log
+      app: my-logs
   template:
     metadata:
       labels:
-        app: mi-app-log
+        app: my-logs
     spec:
       containers:
         - name: app
-          image: hernancloud01/demo4:1.0
+          image: hernancloud01/multilog:1.0
           ports:
             - containerPort: 8080
           env:
